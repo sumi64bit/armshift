@@ -1,0 +1,5 @@
+[gd_resource type="AudioBusLayout" format=3 uid="uid://bk2yy5ox22bwj"]
+
+[resource]
+bus/0/bypass_fx = true
+bus/0/send = &"vaxis_motor"

@@ -1,0 +1,66 @@
+[gd_scene format=3 uid="uid://dj8dbpscnoo6h"]
+
+[ext_resource type="Texture2D" uid="uid://8wb1mf6wdck8" path="res://visuals/cardboard_box.png" id="1_0avu2"]
+[ext_resource type="Script" uid="uid://d2030jx4e5gha" path="res://scripts/normal_box.gd" id="1_26d86"]
+[ext_resource type="Texture2D" uid="uid://o5ol8iauenou" path="res://visuals/white_square_32p.png" id="3_h4da0"]
+[ext_resource type="Texture2D" uid="uid://bsr6mkubplemm" path="res://visuals/telerobot/idle/frame0000.png" id="4_amelq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xaitb"]
+size = Vector2(64, 64)
+
+[node name="normal_box" type="RigidBody2D" unique_id=1667840895 groups=["cargo", "grabbables"]]
+script = ExtResource("1_26d86")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=837557961]
+shape = SubResource("RectangleShape2D_xaitb")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=435388572]
+visible = false
+offset_left = -34.0
+offset_top = -34.0
+offset_right = 34.0
+offset_bottom = 34.0
+color = Color(0.43529412, 0.8784314, 1, 1)
+
+[node name="texture" type="TextureRect" parent="." unique_id=949627375]
+texture_filter = 1
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 32.0
+offset_bottom = 32.0
+pivot_offset = Vector2(32, 32)
+texture = ExtResource("1_0avu2")
+expand_mode = 1
+
+[node name="exploding" type="TextureRect" parent="texture" unique_id=2103237535]
+modulate = Color(1, 1, 1, 0)
+texture_filter = 1
+layout_mode = 0
+offset_right = 64.0
+offset_bottom = 64.0
+pivot_offset = Vector2(32, 32)
+texture = ExtResource("3_h4da0")
+expand_mode = 1
+
+[node name="explosionTimer" type="Timer" parent="." unique_id=1331079824]
+wait_time = 5.0
+one_shot = true
+
+[node name="triggerTrapTimer" type="Timer" parent="." unique_id=34683748]
+one_shot = true
+
+[node name="RestTimer" type="Timer" parent="." unique_id=478581142]
+one_shot = true
+
+[node name="box_inside" type="Node2D" parent="." unique_id=1099745988]
+texture_filter = 1
+
+[node name="telerobot" type="Sprite2D" parent="box_inside" unique_id=1268040183]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(4.7683716e-07, 7.0000005)
+scale = Vector2(1.40625, 1.40625)
+texture = ExtResource("4_amelq")
+
+[connection signal="timeout" from="explosionTimer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="triggerTrapTimer" to="." method="_on_trigger_trap_timer_timeout"]
+[connection signal="timeout" from="RestTimer" to="." method="_on_rest_timer_timeout"]

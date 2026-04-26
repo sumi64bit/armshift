@@ -1,0 +1,82 @@
+[gd_scene format=3 uid="uid://c4ar7uqo63gfv"]
+
+[ext_resource type="Script" uid="uid://bjga41s1cu5tf" path="res://scripts/explosion.gd" id="1_h04pg"]
+[ext_resource type="Texture2D" uid="uid://cptvnf73nhk03" path="res://visuals/particle.png" id="2_fhgot"]
+[ext_resource type="Texture2D" uid="uid://ul4ocwq8v5ra" path="res://visuals/spark.png" id="3_pprfm"]
+[ext_resource type="AudioStream" uid="uid://0et0abmn70d5" path="res://audio/sfx/robot_explosion.mp3" id="4_fhgot"]
+
+[sub_resource type="Curve" id="Curve_qbd0i"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.096676745, 1), -0.13051732, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_eomj6"]
+colors = PackedColorArray(0.5173089, 0.52881527, 0.45536053, 1, 0.5176471, 0.5176471, 0.5176471, 0)
+
+[sub_resource type="Gradient" id="Gradient_sm4du"]
+colors = PackedColorArray(1, 0.8862745, 0, 1, 1, 1, 1, 0)
+
+[sub_resource type="Gradient" id="Gradient_h04pg"]
+colors = PackedColorArray(1, 0.6901961, 0, 1, 1, 1, 0, 1)
+
+[node name="explosion" type="Node2D" unique_id=355406862]
+script = ExtResource("1_h04pg")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="." unique_id=1619819707]
+texture_filter = 1
+emitting = false
+texture = ExtResource("2_fhgot")
+one_shot = true
+explosiveness = 1.0
+randomness = 1.0
+direction = Vector2(0, 0)
+spread = 180.0
+gravity = Vector2(0, -207.635)
+initial_velocity_min = 28.95
+initial_velocity_max = 28.95
+scale_amount_min = 4.0
+scale_amount_max = 5.0
+scale_amount_curve = SubResource("Curve_qbd0i")
+color_ramp = SubResource("Gradient_eomj6")
+
+[node name="CPUParticles2D3" type="CPUParticles2D" parent="." unique_id=1571452469]
+texture_filter = 1
+emitting = false
+amount = 16
+texture = ExtResource("3_pprfm")
+one_shot = true
+explosiveness = 1.0
+randomness = 1.0
+particle_flag_align_y = true
+direction = Vector2(0, 0)
+spread = 180.0
+gravity = Vector2(0, 40)
+initial_velocity_min = 98.25
+initial_velocity_max = 147.75
+scale_amount_min = 2.95
+scale_amount_max = 4.35
+scale_amount_curve = SubResource("Curve_qbd0i")
+color_ramp = SubResource("Gradient_sm4du")
+
+[node name="CPUParticles2D2" type="CPUParticles2D" parent="." unique_id=780097177]
+texture_filter = 1
+emitting = false
+texture = ExtResource("2_fhgot")
+one_shot = true
+explosiveness = 1.0
+randomness = 1.0
+direction = Vector2(0, 0)
+spread = 180.0
+gravity = Vector2(0, -30)
+initial_velocity_min = 28.95
+initial_velocity_max = 28.95
+scale_amount_min = 3.0
+scale_amount_max = 4.0
+scale_amount_curve = SubResource("Curve_qbd0i")
+color_ramp = SubResource("Gradient_sm4du")
+color_initial_ramp = SubResource("Gradient_h04pg")
+
+[node name="audio" type="AudioStreamPlayer2D" parent="." unique_id=100141113]
+stream = ExtResource("4_fhgot")
+volume_db = -10.0
+pitch_scale = 2.0
+autoplay = true

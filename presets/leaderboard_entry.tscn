@@ -1,0 +1,381 @@
+[gd_scene format=3 uid="uid://w5gfer5gsxsx"]
+
+[ext_resource type="Texture2D" uid="uid://cusry8q5ylotf" path="res://visuals/leaderboard_entry_outline.png" id="1_prev6"]
+[ext_resource type="Script" uid="uid://b6flo70f25y6d" path="res://scripts/leaderboard_entry.gd" id="1_t5odd"]
+[ext_resource type="Texture2D" uid="uid://dcp6vrmm1fbqf" path="res://visuals/leaderboard_entry_inside.png" id="2_ulve7"]
+[ext_resource type="FontFile" uid="uid://dnq7qndqof73w" path="res://fonts/VCR_OSD_MONO_1.001.ttf" id="3_6l6bm"]
+[ext_resource type="Texture2D" uid="uid://dw4afbot1ay3t" path="res://visuals/16p_square.png" id="4_fe3t3"]
+[ext_resource type="Texture2D" uid="uid://jti1o6kffv85" path="res://visuals/loading_rotor.png" id="5_koemu"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ulve7"]
+
+[sub_resource type="Gradient" id="Gradient_fe3t3"]
+colors = PackedColorArray(1.6845763e-06, 0.47308552, 0.611454, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ct2bu"]
+gradient = SubResource("Gradient_fe3t3")
+
+[sub_resource type="Gradient" id="Gradient_ct2bu"]
+colors = PackedColorArray(1, 0.34509805, 0, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_sdtuf"]
+gradient = SubResource("Gradient_ct2bu")
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_fe3t3"]
+blend_mode = 1
+
+[sub_resource type="Gradient" id="Gradient_sdtuf"]
+offsets = PackedFloat32Array(0, 0.5176282, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_6dp4v"]
+gradient = SubResource("Gradient_sdtuf")
+
+[sub_resource type="Animation" id="Animation_1ox6v"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect2:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-670, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TextureRect2:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_2xpcc"]
+resource_name = "def"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect2:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-670, -0.25, 0, 0.25, 0, 512, -0.16666667, -197, 0, 0),
+"times": PackedFloat32Array(0, 2.0333333)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TextureRect2:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.16666667, 0, 0, 0),
+"times": PackedFloat32Array(0, 2.0333333)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_17shn"]
+_data = {
+&"RESET": SubResource("Animation_1ox6v"),
+&"def": SubResource("Animation_2xpcc")
+}
+
+[sub_resource type="LabelSettings" id="LabelSettings_t5odd"]
+font = ExtResource("3_6l6bm")
+font_size = 26
+
+[sub_resource type="LabelSettings" id="LabelSettings_6l6bm"]
+font = ExtResource("3_6l6bm")
+font_size = 24
+
+[sub_resource type="LabelSettings" id="LabelSettings_fe3t3"]
+font = ExtResource("3_6l6bm")
+font_size = 20
+font_color = Color(1, 0.96862745, 0.39607844, 1)
+
+[sub_resource type="Animation" id="Animation_fe3t3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:scale:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:scale:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_ct2bu"]
+resource_name = "def"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 4.712389]
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:scale:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 2, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1.26, -0.083333336, -0.043333333, 0, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5, 1)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:scale:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 2, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1.26, -0.083333336, -0.043333333, 0, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5, 1)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sdtuf"]
+_data = {
+&"RESET": SubResource("Animation_fe3t3"),
+&"def": SubResource("Animation_ct2bu")
+}
+
+[node name="leaderboard_entry" type="Panel" unique_id=867314239]
+texture_filter = 1
+custom_minimum_size = Vector2(512, 74)
+offset_right = 512.0
+offset_bottom = 74.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_ulve7")
+script = ExtResource("1_t5odd")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=734350930]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_prev6")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="normal" type="TextureRect" parent="." unique_id=1290128348]
+modulate = Color(0.53154707, 0.60447687, 0.7217833, 1)
+clip_children = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_ulve7")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="TextureRect" type="TextureRect" parent="normal" unique_id=498508712]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -256.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture1D_ct2bu")
+
+[node name="global1" type="TextureRect" parent="." unique_id=1546937060]
+visible = false
+modulate = Color(0.73083705, 0.56340224, 0.3936225, 1)
+clip_children = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_ulve7")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="TextureRect" type="TextureRect" parent="global1" unique_id=453955341]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -256.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture1D_sdtuf")
+
+[node name="TextureRect2" type="TextureRect" parent="global1" unique_id=1059510743]
+modulate = Color(1, 1, 0.33333334, 0.32941177)
+material = SubResource("CanvasItemMaterial_fe3t3")
+layout_mode = 0
+offset_left = -670.0
+offset_right = -0.9987793
+offset_bottom = 80.0
+texture = SubResource("GradientTexture1D_6dp4v")
+
+[node name="glow_anim" type="AnimationPlayer" parent="global1" unique_id=938304127]
+libraries/ = SubResource("AnimationLibrary_17shn")
+autoplay = &"def"
+
+[node name="TextureRect3" type="TextureRect" parent="." unique_id=111711388]
+visible = false
+modulate = Color(0, 0, 0, 0.34117648)
+layout_mode = 0
+offset_left = 7.0
+offset_top = 11.0
+offset_right = 59.0
+offset_bottom = 63.0
+texture = ExtResource("4_fe3t3")
+expand_mode = 1
+
+[node name="rank" type="Label" parent="." unique_id=431429402]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 25.0
+offset_right = 102.0
+offset_bottom = 48.0
+text = "0"
+label_settings = SubResource("LabelSettings_t5odd")
+
+[node name="name" type="Label" parent="." unique_id=447431113]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 104.0
+offset_top = -22.0
+offset_right = 363.0
+offset_bottom = 19.5
+grow_vertical = 2
+text = "playername"
+label_settings = SubResource("LabelSettings_6l6bm")
+vertical_alignment = 1
+
+[node name="points" type="Label" parent="." unique_id=1261793314]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -183.0
+offset_top = -20.0
+offset_right = -11.0
+offset_bottom = 21.5
+grow_horizontal = 0
+grow_vertical = 2
+text = "99999999"
+label_settings = SubResource("LabelSettings_fe3t3")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="unranked" type="TextureRect" parent="." unique_id=191999739]
+visible = false
+self_modulate = Color(0.30980393, 0.57254905, 0.67058825, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_ulve7")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="label" type="Label" parent="unranked" unique_id=2060272568]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -56.5
+offset_top = -20.75
+offset_right = 56.5
+offset_bottom = 20.75
+grow_horizontal = 2
+grow_vertical = 2
+text = "Unranked"
+label_settings = SubResource("LabelSettings_6l6bm")
+vertical_alignment = 1
+
+[node name="loading" type="TextureRect" parent="." unique_id=1271610544]
+visible = false
+self_modulate = Color(0.30980393, 0.57254905, 0.67058825, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_ulve7")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="Sprite2D" type="TextureRect" parent="loading" unique_id=976149953]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(16, 16)
+texture = ExtResource("5_koemu")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="loading" unique_id=1882683339]
+libraries/ = SubResource("AnimationLibrary_sdtuf")
+autoplay = &"def"
+speed_scale = 0.5
+
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]

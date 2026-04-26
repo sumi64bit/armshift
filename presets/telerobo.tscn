@@ -1,0 +1,131 @@
+[gd_scene format=3 uid="uid://bqrna5lkggvq4"]
+
+[ext_resource type="Script" uid="uid://dcjasg7aiuo6s" path="res://scripts/telerobo.gd" id="1_trddm"]
+[ext_resource type="Texture2D" uid="uid://bsr6mkubplemm" path="res://visuals/telerobot/idle/frame0000.png" id="1_uctlw"]
+[ext_resource type="Texture2D" uid="uid://ig6tlkvc152l" path="res://visuals/telerobot/idle/frame0001.png" id="2_3ek0j"]
+[ext_resource type="Texture2D" uid="uid://cyate8723ktev" path="res://visuals/telerobot/laser_gun.png" id="2_eele5"]
+[ext_resource type="Script" uid="uid://fc462loyo7nq" path="res://scripts/telerobo_laser_ray.gd" id="2_wb62s"]
+[ext_resource type="Texture2D" uid="uid://wmj3favqcegl" path="res://visuals/telerobot/idle/frame0002.png" id="3_1mk2n"]
+[ext_resource type="Texture2D" uid="uid://bv3x0axq1xge3" path="res://visuals/telerobot/laser_holder.png" id="3_wb62s"]
+[ext_resource type="Texture2D" uid="uid://bcpqo5bd4ffxj" path="res://visuals/telerobot/idle/frame0003.png" id="4_xcp0c"]
+[ext_resource type="Texture2D" uid="uid://qdloetjm5r5x" path="res://visuals/telerobot/idle/frame0004.png" id="5_p0jni"]
+[ext_resource type="Texture2D" uid="uid://de7wbqnv377tp" path="res://visuals/telerobot/idle/frame0005.png" id="6_jeb4b"]
+[ext_resource type="Texture2D" uid="uid://bddmbfgfdehxm" path="res://visuals/telerobot/running/frame0000.png" id="7_1dqam"]
+[ext_resource type="Texture2D" uid="uid://c0oiww22jty1" path="res://visuals/telerobot/running/frame0001.png" id="8_trddm"]
+[ext_resource type="Texture2D" uid="uid://cguuea2s6kqrl" path="res://visuals/telerobot/running/frame0002.png" id="9_gij86"]
+[ext_resource type="Texture2D" uid="uid://dmhj0sere4gs1" path="res://visuals/telerobot/running/frame0003.png" id="10_eele5"]
+[ext_resource type="Texture2D" uid="uid://bnee14tr4t0gv" path="res://visuals/telerobot/running/frame0004.png" id="11_wb62s"]
+[ext_resource type="Texture2D" uid="uid://dh66o80vdecma" path="res://visuals/telerobot/running/frame0005.png" id="12_kwh2d"]
+[ext_resource type="AudioStream" uid="uid://bevlrmt5eicec" path="res://audio/sfx/robot_step.mp3" id="17_kwh2d"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1dqam"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_uctlw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_3ek0j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_1mk2n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_xcp0c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_p0jni")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_jeb4b")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_1dqam")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_trddm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_gij86")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_eele5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_wb62s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_kwh2d")
+}],
+"loop": true,
+"name": &"running",
+"speed": 12.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1dqam"]
+radius = 20.0
+height = 60.0
+
+[node name="telerobo" type="RigidBody2D" unique_id=1109947820 groups=["enemy", "grabbables"]]
+texture_filter = 1
+lock_rotation = true
+script = ExtResource("1_trddm")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=449958866]
+position = Vector2(0, -30)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_1dqam")
+animation = &"running"
+autoplay = "idle"
+frame_progress = 0.57811767
+
+[node name="LaserGun" type="Node2D" parent="." unique_id=1963084377]
+position = Vector2(-4, -61)
+
+[node name="TeleroboLaserRay" type="RayCast2D" parent="LaserGun" unique_id=918562752]
+target_position = Vector2(500, 0)
+script = ExtResource("2_wb62s")
+laser_width = 8.0
+
+[node name="Sprite2D2" type="Sprite2D" parent="LaserGun" unique_id=1112121467]
+scale = Vector2(2, 2)
+texture = ExtResource("2_eele5")
+offset = Vector2(4.5, -0.5)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=543795449]
+position = Vector2(-4, -61)
+scale = Vector2(2, 2)
+texture = ExtResource("3_wb62s")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2044910441]
+position = Vector2(0, -30)
+shape = SubResource("CapsuleShape2D_1dqam")
+
+[node name="WallRayRight" type="RayCast2D" parent="." unique_id=2083122348]
+position = Vector2(0, -15)
+target_position = Vector2(40, 0)
+
+[node name="LedgeRayRight" type="RayCast2D" parent="." unique_id=1641440594]
+position = Vector2(21, -15)
+target_position = Vector2(0, 30)
+
+[node name="LedgeRayLeft" type="RayCast2D" parent="." unique_id=1535936621]
+position = Vector2(-21, -15)
+target_position = Vector2(0, 30)
+
+[node name="WallRayLeft" type="RayCast2D" parent="." unique_id=1679249598]
+position = Vector2(0, -15)
+target_position = Vector2(-40, 0)
+
+[node name="movement_audio" type="AudioStreamPlayer2D" parent="." unique_id=1351267359]
+stream = ExtResource("17_kwh2d")
+volume_db = -20.0
+pitch_scale = 3.0
+
+[node name="FloorRay" type="RayCast2D" parent="." unique_id=825517787]
+position = Vector2(0, -28)

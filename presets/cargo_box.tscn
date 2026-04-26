@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://cvqutsatq22rn"]
+
+[ext_resource type="Script" uid="uid://b38n7i758vfa7" path="res://scripts/cargo_box.gd" id="1_a24py"]
+[ext_resource type="Texture2D" uid="uid://b2iwaad437syn" path="res://visuals/rect_box.png" id="1_sad1x"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a24py"]
+size = Vector2(128, 64)
+
+[node name="cargo_box" type="RigidBody2D" unique_id=621151435 groups=["cargo", "grabbables"]]
+texture_filter = 1
+script = ExtResource("1_a24py")
+max_impact_force = 1000.0
+max_speed = 1000.0
+value = 200
+
+[node name="texture" type="Sprite2D" parent="." unique_id=319671491]
+scale = Vector2(2, 2)
+texture = ExtResource("1_sad1x")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=459656923]
+shape = SubResource("RectangleShape2D_a24py")
+
+[node name="RestTimer" type="Timer" parent="." unique_id=1042885094]
+one_shot = true
+
+[connection signal="timeout" from="RestTimer" to="." method="_on_rest_timer_timeout"]

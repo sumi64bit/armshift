@@ -1,0 +1,240 @@
+[gd_scene format=3 uid="uid://cf32v6a16c431"]
+
+[ext_resource type="Script" uid="uid://bfi1ef33jcbbf" path="res://scripts/conveyor_belt.gd" id="1_niip6"]
+[ext_resource type="Texture2D" uid="uid://ly13xincfurs" path="res://visuals/convveyor/belt_round.png" id="2_eedav"]
+[ext_resource type="Texture2D" uid="uid://cigc7f2s2uiif" path="res://visuals/convveyor/conveyor_middle.png" id="2_f1pdl"]
+[ext_resource type="Texture2D" uid="uid://bieqdeoc7xqbf" path="res://visuals/convveyor/belt_flat.png" id="3_coqaa"]
+[ext_resource type="Texture2D" uid="uid://ch7jyypndjkm5" path="res://visuals/convveyor/conveyor_end.png" id="3_nw3d3"]
+[ext_resource type="Texture2D" uid="uid://doeer8d42bbof" path="res://visuals/convveyor/conveyor_rotor.png" id="4_nw3d3"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_niip6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nnsk1"]
+size = Vector2(1348, 95)
+
+[sub_resource type="Animation" id="Animation_pjpfj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("belt_flat:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(651, 6.5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("belt_flat:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1112, 3)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("belt_flat2:size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(651, 6.5)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("belt_flat2:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-183, 60)]
+}
+
+[sub_resource type="Animation" id="Animation_gqy5k"]
+resource_name = "def"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("belt_flat:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(651, 6.5), Vector2(658.83777, 6.5000005)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("belt_flat:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1112, 3), Vector2(1127.6755, 3.0000014)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("belt_flat2:size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(659, 6.5), Vector2(667, 6.5)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("belt_flat2:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-183, 60), Vector2(-199, 60)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_s04bw"]
+_data = {
+&"RESET": SubResource("Animation_pjpfj"),
+&"def": SubResource("Animation_gqy5k")
+}
+
+[sub_resource type="Animation" id="Animation_eq2kf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("belt_round:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_p43ea"]
+resource_name = "def"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("belt_round:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 3.1415927]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ybgdd"]
+_data = {
+&"RESET": SubResource("Animation_eq2kf"),
+&"def": SubResource("Animation_p43ea")
+}
+
+[node name="ConveyorBelt" type="StaticBody2D" unique_id=1388414686]
+physics_material_override = SubResource("PhysicsMaterial_niip6")
+constant_linear_velocity = Vector2(20, 0)
+script = ExtResource("1_niip6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=317147568]
+position = Vector2(484, 43.5)
+shape = SubResource("RectangleShape2D_nnsk1")
+
+[node name="belt_round" type="TextureRect" parent="." unique_id=231307215]
+texture_filter = 1
+offset_left = 1105.0
+offset_top = 13.0
+offset_right = 1141.0
+offset_bottom = 49.0
+scale = Vector2(2, 2)
+pivot_offset = Vector2(18, 18)
+texture = ExtResource("2_eedav")
+expand_mode = 1
+
+[node name="belt_flat" type="TextureRect" parent="." unique_id=1293232673]
+texture_filter = 1
+offset_left = 1112.0
+offset_top = 3.0
+offset_right = 1763.0
+offset_bottom = 9.5
+rotation = 3.1415927
+scale = Vector2(2, 2)
+texture = ExtResource("3_coqaa")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="belt_flat2" type="TextureRect" parent="." unique_id=1350575354]
+texture_filter = 1
+offset_left = -183.0
+offset_top = 60.0
+offset_right = 468.0
+offset_bottom = 66.5
+scale = Vector2(2, 2)
+texture = ExtResource("3_coqaa")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1329270066]
+texture_filter = 1
+offset_left = -183.0
+offset_right = 452.5
+offset_bottom = 33.78073
+scale = Vector2(2, 2)
+texture = ExtResource("2_f1pdl")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="TextureRect2" type="TextureRect" parent="." unique_id=180648445]
+texture_filter = 1
+offset_left = 1088.0
+offset_right = 1120.0
+offset_bottom = 32.0
+scale = Vector2(2, 2)
+texture = ExtResource("3_nw3d3")
+expand_mode = 1
+
+[node name="TextureRect3" type="TextureRect" parent="." unique_id=1450401592]
+texture_filter = 1
+offset_left = 1090.0
+offset_top = 2.0
+offset_right = 1150.0
+offset_bottom = 62.0
+pivot_offset = Vector2(30, 30)
+texture = ExtResource("4_nw3d3")
+expand_mode = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=404668837]
+libraries/ = SubResource("AnimationLibrary_s04bw")
+autoplay = &"def"
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="." unique_id=705226692]
+libraries/ = SubResource("AnimationLibrary_ybgdd")
+autoplay = &"def"
+speed_scale = 0.1

@@ -1,0 +1,87 @@
+[gd_scene format=3 uid="uid://bekufpwn5m8fl"]
+
+[ext_resource type="Texture2D" uid="uid://be71fw6mma1du" path="res://visuals/truck/truck.png" id="1_4hvk5"]
+[ext_resource type="Script" uid="uid://dahlspmwbnb87" path="res://scripts/cargo_truck.gd" id="1_sehkb"]
+[ext_resource type="Texture2D" uid="uid://d3wkq2r8tlkc0" path="res://visuals/truck/wheel.png" id="2_sehkb"]
+[ext_resource type="AudioStream" uid="uid://3oajtoe6ceqr" path="res://audio/sfx/truck_engine.mp3" id="4_2n3y5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hta1f"]
+size = Vector2(415, 126)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_al7vx"]
+size = Vector2(243, 307)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_sehkb"]
+radius = 51.0
+
+[node name="cargo_truck" type="RigidBody2D" unique_id=1459696311 groups=["van"]]
+texture_filter = 1
+mass = 100.0
+script = ExtResource("1_sehkb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=904338413]
+position = Vector2(-137.5, 3)
+shape = SubResource("RectangleShape2D_hta1f")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="." unique_id=1620665844]
+position = Vector2(191.5, -88.5)
+shape = SubResource("RectangleShape2D_al7vx")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=497839384]
+offset_left = -412.0
+offset_top = -296.0
+offset_right = 358.0
+offset_bottom = 89.0
+texture = ExtResource("1_4hvk5")
+
+[node name="PinJoint2D" type="PinJoint2D" parent="." unique_id=76929182]
+position = Vector2(195, 44)
+node_a = NodePath("..")
+node_b = NodePath("wheel3")
+bias = 0.9
+softness = 0.2
+
+[node name="wheel3" type="RigidBody2D" parent="PinJoint2D" unique_id=301880074]
+mass = 10.0
+
+[node name="wheel1" type="TextureRect" parent="PinJoint2D/wheel3" unique_id=213187920]
+offset_left = -55.0
+offset_top = -55.0
+offset_right = 55.0
+offset_bottom = 55.0
+pivot_offset = Vector2(55, 55)
+texture = ExtResource("2_sehkb")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="PinJoint2D/wheel3" unique_id=1379543458]
+shape = SubResource("CircleShape2D_sehkb")
+
+[node name="PinJoint2D2" type="PinJoint2D" parent="." unique_id=588927781]
+position = Vector2(-225, 44)
+node_a = NodePath("..")
+node_b = NodePath("wheel3")
+bias = 0.9
+softness = 0.2
+
+[node name="wheel3" type="RigidBody2D" parent="PinJoint2D2" unique_id=1859963391]
+mass = 10.0
+
+[node name="wheel1" type="TextureRect" parent="PinJoint2D2/wheel3" unique_id=448084447]
+offset_left = -55.0
+offset_top = -55.0
+offset_right = 55.0
+offset_bottom = 55.0
+pivot_offset = Vector2(55, 55)
+texture = ExtResource("2_sehkb")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="PinJoint2D2/wheel3" unique_id=902182128]
+shape = SubResource("CircleShape2D_sehkb")
+
+[node name="truck_engine_audio" type="AudioStreamPlayer2D" parent="." unique_id=666929241]
+stream = ExtResource("4_2n3y5")
+
+[node name="movingTimer" type="Timer" parent="." unique_id=356045830]
+wait_time = 3.0
+one_shot = true
+
+[connection signal="finished" from="truck_engine_audio" to="." method="_on_truck_engine_audio_finished"]
+[connection signal="timeout" from="movingTimer" to="." method="_on_moving_timer_timeout"]

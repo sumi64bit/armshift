@@ -1,0 +1,240 @@
+[gd_scene format=3 uid="uid://c2tcc8qg15ppo"]
+
+[ext_resource type="Script" uid="uid://htu66jpfwkx" path="res://scripts/upgrade_notification.gd" id="1_03t5g"]
+[ext_resource type="Texture2D" uid="uid://k2mjg5ykbt8e" path="res://visuals/ui/upgrade_notification_outline.png" id="2_njir7"]
+[ext_resource type="Texture2D" uid="uid://g3xe58rc46sh" path="res://visuals/ui/upgrade_notification_inline.png" id="3_oes3t"]
+[ext_resource type="FontFile" uid="uid://dnq7qndqof73w" path="res://fonts/VCR_OSD_MONO_1.001.ttf" id="4_qcx8p"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_jxcif"]
+font = ExtResource("4_qcx8p")
+
+[sub_resource type="LabelSettings" id="LabelSettings_50121"]
+font = ExtResource("4_qcx8p")
+font_color = Color(0.8901961, 0.49019608, 0.44313726, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_tsdwy"]
+font = ExtResource("4_qcx8p")
+font_color = Color(1, 1, 0, 1)
+
+[sub_resource type="Animation" id="Animation_03t5g"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:modulate:r")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:modulate:g")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:modulate:b")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".:modulate:a")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_njir7"]
+resource_name = "in"
+length = 4.0
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(2, 0, 0, 0),
+"points": PackedFloat32Array(1e-05, 0, 0, 0.16111112, 0.16666502, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1e-05, 0, 0, 0.16111112, 0.16666502),
+"times": PackedFloat32Array(0, 0.6, 3.29, 4)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(2, 0, 0, 0),
+"points": PackedFloat32Array(1, 0, 0, 0.16111112, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, 0, 0, 0.16111112, 0),
+"times": PackedFloat32Array(0, 0.6, 3.29, 4)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:modulate:r")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.16666667, 0, 0, 0, 1, -0.16666667, 0, 0, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.6333334, 3.3233333, 4)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:modulate:g")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.16666667, 0, 0, 0, 1, -0.16666667, 0, 0, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.6333334, 3.3233333, 4)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:modulate:b")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.16666667, 0, 0, 0, 1, -0.16666667, 0, 0, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.6333334, 3.3233333, 4)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".:modulate:a")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1, -0.16666667, -0.16666667, 0, 0, 1, -0.16666667, -0.16666667, 0, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.6333334, 3.3233333, 4)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_oes3t"]
+_data = {
+&"RESET": SubResource("Animation_03t5g"),
+&"in": SubResource("Animation_njir7")
+}
+
+[node name="upgrade_notification" type="Control" unique_id=893203471]
+modulate = Color(1, 1, 1, 0)
+texture_filter = 1
+custom_minimum_size = Vector2(300, 64)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 300.0
+offset_bottom = 64.0
+pivot_offset = Vector2(150, 0)
+script = ExtResource("1_03t5g")
+
+[node name="Panel" type="TextureRect" parent="." unique_id=175679055]
+custom_minimum_size = Vector2(300, 52)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -26.0
+offset_right = 150.0
+offset_bottom = 26.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_njir7")
+
+[node name="Panel2" type="TextureRect" parent="." unique_id=1558348374]
+self_modulate = Color(0.31431612, 0.31431612, 0.3143161, 1)
+custom_minimum_size = Vector2(300, 52)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -26.0
+offset_right = 150.0
+offset_bottom = 26.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_oes3t")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel2" unique_id=1987236411]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="name" type="Label" parent="Panel2/HBoxContainer" unique_id=686911409]
+layout_mode = 2
+text = "Upgrade name: "
+label_settings = SubResource("LabelSettings_jxcif")
+
+[node name="from" type="Label" parent="Panel2/HBoxContainer" unique_id=1722776290]
+layout_mode = 2
+text = "0.0"
+label_settings = SubResource("LabelSettings_50121")
+
+[node name="Label3" type="Label" parent="Panel2/HBoxContainer" unique_id=1830224308]
+layout_mode = 2
+text = ">>"
+label_settings = SubResource("LabelSettings_tsdwy")
+
+[node name="to" type="Label" parent="Panel2/HBoxContainer" unique_id=1941884390]
+layout_mode = 2
+text = "0.0"
+label_settings = SubResource("LabelSettings_tsdwy")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1140857617]
+libraries/ = SubResource("AnimationLibrary_oes3t")
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

@@ -1,0 +1,63 @@
+[gd_scene format=3 uid="uid://b5dmrnvt7lscn"]
+
+[ext_resource type="Script" uid="uid://bjga41s1cu5tf" path="res://scripts/explosion.gd" id="1_mhijl"]
+[ext_resource type="Texture2D" uid="uid://cptvnf73nhk03" path="res://visuals/particle.png" id="2_bmgfw"]
+[ext_resource type="Texture2D" uid="uid://jdro2uok4p2u" path="res://visuals/shard.png" id="3_2oeco"]
+[ext_resource type="AudioStream" uid="uid://pqbgdeuuj8jr" path="res://audio/sfx/box_explosion.mp3" id="4_bmgfw"]
+
+[sub_resource type="Curve" id="Curve_qbd0i"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.096676745, 1), -0.13051732, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_yfaa0"]
+colors = PackedColorArray(0.85348755, 0.85348773, 0.8534877, 1, 1, 1, 1, 0)
+
+[sub_resource type="Curve" id="Curve_p0xke"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.096676745, 1), -0.13051732, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_tv0e6"]
+colors = PackedColorArray(1, 0.8862745, 0, 1, 1, 1, 1, 0)
+
+[node name="box_explosion" type="Node2D" unique_id=1550617385]
+script = ExtResource("1_mhijl")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="." unique_id=1702803834]
+texture_filter = 1
+emitting = false
+texture = ExtResource("2_bmgfw")
+one_shot = true
+explosiveness = 1.0
+randomness = 1.0
+direction = Vector2(0, 0)
+spread = 180.0
+gravity = Vector2(0, -207.635)
+initial_velocity_min = 28.95
+initial_velocity_max = 28.95
+scale_amount_min = 4.0
+scale_amount_max = 5.0
+scale_amount_curve = SubResource("Curve_qbd0i")
+color_ramp = SubResource("Gradient_yfaa0")
+
+[node name="CPUParticles2D3" type="CPUParticles2D" parent="." unique_id=1183315621]
+texture_filter = 1
+emitting = false
+amount = 16
+texture = ExtResource("3_2oeco")
+one_shot = true
+explosiveness = 1.0
+randomness = 1.0
+particle_flag_align_y = true
+direction = Vector2(0, 0)
+spread = 180.0
+gravity = Vector2(0, 40)
+initial_velocity_min = 25.4
+initial_velocity_max = 254.95
+scale_amount_min = 1.5
+scale_amount_max = 2.6
+scale_amount_curve = SubResource("Curve_p0xke")
+color_ramp = SubResource("Gradient_tv0e6")
+
+[node name="audio" type="AudioStreamPlayer2D" parent="." unique_id=1609653691]
+stream = ExtResource("4_bmgfw")
+autoplay = true
