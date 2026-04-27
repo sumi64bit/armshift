@@ -32,6 +32,7 @@
 [ext_resource type="PackedScene" uid="uid://w5gfer5gsxsx" path="res://presets/leaderboard_entry.tscn" id="30_navra"]
 [ext_resource type="Texture2D" uid="uid://ce32d62ybjyt8" path="res://visuals/ratings/x.png" id="30_rup4s"]
 [ext_resource type="Texture2D" uid="uid://jti1o6kffv85" path="res://visuals/loading_rotor.png" id="32_fh13f"]
+[ext_resource type="Texture2D" uid="uid://chkixq8qyfxtm" path="res://visuals/instructions_outline.png" id="32_ggc52"]
 [ext_resource type="Texture2D" uid="uid://bbyofbp282sym" path="res://visuals/leaderboard_button.png" id="32_rup4s"]
 [ext_resource type="Script" uid="uid://dl4dhyt36fnoo" path="res://scripts/leaderboard.gd" id="34_4kbfs"]
 [ext_resource type="Texture2D" uid="uid://dnexd40c87i7d" path="res://visuals/sumi_logo.png" id="34_x2olw"]
@@ -670,6 +671,13 @@ particles_anim_loop = false
 [sub_resource type="LabelSettings" id="LabelSettings_rup4s"]
 font = ExtResource("25_ts3gi")
 
+[sub_resource type="LabelSettings" id="LabelSettings_l8ah6"]
+font = ExtResource("25_ts3gi")
+
+[sub_resource type="LabelSettings" id="LabelSettings_e75v4"]
+font = ExtResource("25_ts3gi")
+font_color = Color(1, 0.31764707, 0, 1)
+
 [sub_resource type="Animation" id="Animation_37qwj"]
 length = 0.001
 tracks/0/type = "bezier"
@@ -727,6 +735,29 @@ tracks/4/keys = {
 "handle_modes": PackedInt32Array(0),
 "points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Control/instructions:modulate:a")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Control/instructions:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_hi6a0"]
@@ -786,6 +817,29 @@ tracks/4/keys = {
 "handle_modes": PackedInt32Array(0, 2),
 "points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0, -0.16666667, 0.16666667, 0, 0),
 "times": PackedFloat32Array(0, 1)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Control/instructions:modulate:a")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0, -0.16666667, 0.16666667, 0, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Control/instructions:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_eo1xk"]
@@ -1665,7 +1719,52 @@ grow_vertical = 2
 text = "Click to start"
 label_settings = SubResource("LabelSettings_rup4s")
 
-[node name="Label2" type="Label" parent="ui/main_menu/Control" unique_id=966387275]
+[node name="instructions" type="TextureRect" parent="ui/main_menu/Control" unique_id=646433876]
+self_modulate = Color(1, 0.28235295, 0.26666668, 1)
+layout_mode = 0
+offset_left = -175.0
+offset_top = 397.0
+offset_right = 198.0
+offset_bottom = 471.0
+texture = ExtResource("32_ggc52")
+expand_mode = 1
+
+[node name="Label3" type="Label" parent="ui/main_menu/Control/instructions" unique_id=324331044]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -173.5
+offset_top = -25.0
+offset_right = 323.5
+offset_bottom = 26.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Move the mouse to control the arm
+Use WASD to move around
+Use the Mouse Wheel to switch weapons"
+label_settings = SubResource("LabelSettings_l8ah6")
+
+[node name="Label4" type="Label" parent="ui/main_menu/Control/instructions" unique_id=912238531]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -177.5
+offset_top = -56.0
+offset_right = -92.5
+offset_bottom = -41.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "IMPORTANT"
+label_settings = SubResource("LabelSettings_e75v4")
+
+[node name="Label2" type="Label" parent="ui/main_menu/Control/instructions" unique_id=966387275]
+visible = false
 modulate = Color(1, 1, 1, 0.30980393)
 material = SubResource("CanvasItemMaterial_fh13f")
 layout_mode = 1
@@ -1674,10 +1773,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -248.5
-offset_top = 340.0
-offset_right = 248.5
-offset_bottom = 363.0
+offset_left = -240.0
+offset_top = 111.0
+offset_right = 257.0
+offset_bottom = 134.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Play the game in wavedash.com for global leaderboards"

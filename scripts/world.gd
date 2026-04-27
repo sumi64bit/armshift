@@ -4,7 +4,7 @@ extends Node2D
 var cam_target_position: Vector2
 const UPGRADE_NOTIFICATION = preload("uid://c2tcc8qg15ppo")
 
-var debug: bool = true
+var debug: bool = false
 
 const shift_duration:= 360
 const starting_points:= 0
